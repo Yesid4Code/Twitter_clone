@@ -10,12 +10,15 @@
     
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/a736f4b9b6.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
+    <% if user_signed_in? %>
     <header>
       <%= render 'home/header' %>
     </header>
+    <% end %>
     <main>
       <%= render 'layouts/flash' %>
 
