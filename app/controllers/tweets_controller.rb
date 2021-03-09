@@ -54,10 +54,6 @@ class TweetsController < ApplicationController
   def tweet_params
     params.require(:tweet).permit(:text)
   end
-
-
-
-
-
-
+  
+  # end
 end
