@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   # Helper: call the set_article before any action.
-  before_action :set_article #, only: [:show, :edit, :update, :destroy]
+  before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
   def index
     @tweets = Tweet.all
@@ -47,7 +47,7 @@ class TweetsController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_article
+  def set_tweet
     @tweet = Tweet.find(params[:id])
   end
 
