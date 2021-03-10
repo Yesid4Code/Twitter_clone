@@ -1,7 +1,5 @@
 <% if user_signed_in? %>
-<%= render 'dashboard' %>
+<%= controller.redirect_to tweets_path %>
 <% else %>
-
 <%= render 'cover' %>
-
 <% end %>
