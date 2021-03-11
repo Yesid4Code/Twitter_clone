@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
   
   def index
     @tweets = Tweet.all.order("created_at DESC")
-    @tweets = Tweet.all
+    @tweet = Tweet.new
   end
 
   def show
@@ -13,7 +13,6 @@ class TweetsController < ApplicationController
   end
 
   def new
-    @tweet = Tweet.new
     @tweet = current_user.tweets.build
   end
 
@@ -55,7 +54,7 @@ class TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.require(:tweet).permit(:text)
+    params.require(:tweet).permit(:tweet)
   end
   
   # end
