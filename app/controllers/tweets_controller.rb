@@ -1,8 +1,10 @@
 class TweetsController < ApplicationController
   # Helper: call the set_article before any action.
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   def index
+    @tweets = Tweet.all.order("created_at DESC")
     @tweets = Tweet.all
   end
 
@@ -12,6 +14,7 @@ class TweetsController < ApplicationController
 
   def new
     @tweet = Tweet.new
+    @tweet = current_user.tweets.build
   end
 
   # GET /tweet/1/edit
@@ -20,7 +23,7 @@ class TweetsController < ApplicationController
 
   # POST /articles
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
       flash[:notice] = "Tweet was created successfully."
       #redirect_to article_path(@article) # When you click on save
