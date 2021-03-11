@@ -1,9 +1,11 @@
 class TweetsController < ApplicationController
   # Helper: call the set_article before any action.
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.order("created_at DESC").paginate(page: params[:page], per_page: 10)
+    @tweet = Tweet.new
   end
 
   def show
@@ -11,7 +13,7 @@ class TweetsController < ApplicationController
   end
 
   def new
-    @tweet = Tweet.new
+    @tweet = current_user.tweets.build
   end
 
   # GET /tweet/1/edit
@@ -20,11 +22,11 @@ class TweetsController < ApplicationController
 
   # POST /articles
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
       flash[:notice] = "Tweet was created successfully."
       #redirect_to article_path(@article) # When you click on save
-      redirect_to @tweet # short way with the same effect
+      redirect_to tweets_path(@tweet) # short way with the same effect
     else
       render :new
     end
@@ -52,7 +54,7 @@ class TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.require(:tweet).permit(:text)
+    params.require(:tweet).permit(:tweet)
   end
   
   # end

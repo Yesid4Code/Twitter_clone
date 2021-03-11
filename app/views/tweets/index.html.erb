@@ -1,11 +1,35 @@
 <h1>Continuen chicas</h1>
+<h1>Tweet/Index</h1>
 
-  <div class="container card">
-    <div class="card-body">
-      <text_area class="form-control" aria-label="With textarea">
-	Write your tweet here
-      </text_area>
-      <buttom>This is some text within a card body.</buttom>
-    </div>
+<%= render 'form' %>
+<% @tweets.each do |tweet| %>
+<div class="card w-50">
+  <div class="card-body">
+    <p class="card-text">
+      <b><%= tweet.user.name %></b>,
+      @<%= tweet.user.username %> · 
+      <%= tweet.created_at.getlocal.strftime("%d %b. %Y %H:%M %P") %>
+    <p><%= tweet.tweet %></p>
+    </p>
   </div>
+</div>
 
+
+<% if user_signed_in? && current_user.id == tweet.user_id %>
+<nav class="level">
+  <div class="level-left is-mobile">
+    <%= link_to tweet, class: "level-item" do %>
+    <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
+    <% end %>
+    <%= link_to edit_tweet_path(tweet), class: "level-item" do %>
+    <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+    <% end %>
+    <%= link_to tweet, method: :delete, data: { confirm: "Are you sure you want to delete this tweeet?" } do %>
+    <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+    <% end %>
+  </div>
+</nav>
+<% end %>
+
+<% end %>
+<%= will_paginate @tweets %>

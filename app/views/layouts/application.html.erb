@@ -14,18 +14,18 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
     <header>
-      <%= render 'home/header' %>
+      <% if user_signed_in? %>
+      <%= render 'home/header2' %>
+      <% end %>
     </header>
-    <% end %>
     <main>
-    <%= render 'shared/flash' %>
+      <%= render 'shared/flash' %>
 
-    <%= yield %>
+      <%= yield %>
     </main>
-    <FOOTER>
-    </FOOTER>
+    <footer>
+    </footer>
     <SCRIPT SRC="HTTPS://CDN.JSDELIVR.NET/NPM/BOOTSTRAP@5.0.0-BETA2/DIST/JS/BOOTSTRAP.BUNDLE.MIN.JS" INTEGRITY="SHA384-B5KHYXGCPBZJO/TY9UL7KGKF1S0CWUKCCD38L8YKEH8Z8QJE0GMW1GYU5S9FONJ0" CROSSORIGIN="ANONYMOUS"></SCRIPT>
   </BODY>
 </HTML>
