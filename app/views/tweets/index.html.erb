@@ -3,12 +3,13 @@
 
 <%= render 'form' %>
 <% @tweets.each do |tweet| %>
-<div class="card w-25">
-  <div class="card body">
-    <p class="card text">
-      <strong><%= tweet.user.name %></strong><br>
-      <small><%= tweet.user.username %></small>
-      <p><%= tweet.tweet %></p>
+<div class="card w-50">
+  <div class="card-body">
+    <p class="card-text">
+      <b><%= tweet.user.name %></b>,
+      @<%= tweet.user.username %> -
+      <%= tweet.created_at.strftime("%d %b. %Y %H:%M %P") %>
+    <p><%= tweet.tweet %></p>
     </p>
   </div>
 </div>
