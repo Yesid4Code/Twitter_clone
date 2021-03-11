@@ -13,11 +13,11 @@ class User < ApplicationRecord
   
   before_save :sinitize_text
   has_many :tweets, dependent: :destroy
-  has_many :active_relationship, class_name: "Relationship", foreign_key: "follower_id", dependet: :destroy
-  has_many :pasive_relationship, class_name: "Relationship", foreign_key: "follower_id", dependet: :destroy
+  has_many :active_relationship, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :pasive_relationship, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   
-  has_many :following, through: :active_relationship, source: followed
-  has_many :followers, through: :pasive_relationship, source: follower
+  has_many :following, through: :active_relationship, source: :followed
+  has_many :followers, through: :pasive_relationship, source: :follower
 
   # follow another user
   def follow(other_id)

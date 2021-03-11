@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   resources :tweets
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   devise_for :users
+
   #, controllers: {
   #             sesseions: 'users/sessions'
   #           }
