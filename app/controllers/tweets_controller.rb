@@ -26,7 +26,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       flash[:notice] = "Tweet was created successfully."
       #redirect_to article_path(@article) # When you click on save
-      redirect_to @tweet # short way with the same effect
+      redirect_to tweets_path(@tweet) # short way with the same effect
     else
       render :new
     end
