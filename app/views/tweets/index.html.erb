@@ -7,8 +7,8 @@
   <div class="card-body">
     <p class="card-text">
       <b><%= tweet.user.name %></b>,
-      @<%= tweet.user.username %> -
-      <%= tweet.created_at.strftime("%d %b. %Y %H:%M %P") %>
+      @<%= tweet.user.username %> · 
+      <%= tweet.created_at.getlocal.strftime("%d %b. %Y %H:%M %P") %>
     <p><%= tweet.tweet %></p>
     </p>
   </div>
