@@ -1,0 +1,48 @@
+Who to follow
+<% @users.each do |user|%>
+<% if user.id != current_user.id %>
+<div class="card w-50">
+  <nav class="panel">
+    <div class="panel-block">
+      <article class="media">
+	<div class="media-left">
+	  <figure class="image is-64x64">
+	    <%= gravatar_image_tag(user.email, size: 64, alt: user.name) %>
+	  </figure>
+	</div>
+	<div class="media-content">
+	  <div class="content">
+	    <p>
+	      <strong><%= user.name %></strong><br />
+	      <small><%= user.username %></small>
+	    </p>
+	  </div>
+	</div>
+      </article>
+    </div>
+    <div class="panel-block">
+      <div class="">
+	<div class="level-item has-centered-text">
+	  <div>
+	    <%= render partial: 'follow_button', :user => User.find_by_username(params[:id]) %>
+	  
+	  </div>
+	</div>
+	<div class="level-item has-centered-text">
+	  <div>
+	    Following 200M
+	  </div>
+	</div>
+	<div class="level-item has-centered-text">
+	  <div>
+	    Followers
+	    <%= user.followers.count %>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<% end %>
+<% end %>
