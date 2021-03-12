@@ -9,7 +9,7 @@
     </div><!-- Column 2 -->
     <div class="col-3"> <!-- column 3 -->
       Three of three columns
-      <%= render 'profile' %><br>
+      <%= render partial: 'profile', locals: { user: @user } %><br>
       <%= render 'who_to_follow' %>
     </div> <!-- Column 3 -->
   </div>
