@@ -13,20 +13,20 @@ class User < ApplicationRecord
   
   before_save :sinitize_text
   has_many :tweets, dependent: :destroy
-  has_many :active_relationship, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :pasive_relationship, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   
-  has_many :following, through: :active_relationship, source: :followed
-  has_many :followers, through: :pasive_relationship, source: :follower
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   # follow another user
   def follow(other_id)
-    active_relationship.create(followed_id: other_id)
+    active_relationships.create(followed_id: other_id)
   end
 
   #  unfollow a user
   def unfollow(other_id)
-    active_relationship.find_by(followed_id: other_id).destroy
+    active_relationships.find_by(followed_id: other_id).destroy
   end
 
   # is following a user?
