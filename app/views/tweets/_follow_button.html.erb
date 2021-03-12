@@ -1,15 +1,15 @@
-<% if current_user.id != user.id %>
+<% if current_user.id != @users.ids %>
 <div>
   <div>
     <div>
-      <% if !current_user.following?(user) %>
-      <%= form_with(current_user.active_relationship.build) do |f| %>
-      <div><%= hidden_field_tag :followed_id, user.id %></div>
+      <% if !current_user.following?(@users) %>
+      <%= form_for(current_user.active_relationships.build) do |f| %>
+      <div><%= hidden_field_tag :followed_id, @users.ids %></div>
       <%= f.submit "Follow", class: "btn btn-primary" %>
       <% end %>
       <% else %>
 
-      <%= form_with(current_user.active_relationship.find_by(followed_id: user.id),
+      <%= form_with(current_user.active_relationships.find_by(followed_id: @users.ids),
 	  html: {method: delete}) do |f| %>
       <%= f.submit "Unfollow", class: "btn" %>
       <% end %>
