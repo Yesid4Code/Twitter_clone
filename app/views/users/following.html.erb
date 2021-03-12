@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header">
+    <b>You are following</b>
+  </div>
+  <% current_user.following.each do |followee| %>
+  <div class="container pt-4 row">
+    <div class="col-2"><%= followee.name %></div>
+    <div class="col-1">@<%= followee.username %></div>
+    <div class="col-1"><%= render partial: 'tweets/follow_button', locals: { user: followee } %></div>
+  </div>
+</div>
+<% end %>

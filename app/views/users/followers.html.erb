@@ -1,10 +1,13 @@
-<%if user_signed_in? && @user == current_user %>
-<h1 class="display-4 text-center"> You are followed by </h1>
-<% else %>
-<h1 class="display-4 text-center"> <%= @user.username %> is being followed by </h1>
+<div class="card">
+  <div class="card-header">
+    <b>You followers</b>
+  </div>
+  <% current_user.followers.each do |follower| %>
+  <div class="container pt-4 row">
+    <div class="col-2"><%= follower.name %></div>
+    <div class="col-1">@<%= follower.username %></div>
+    <div class="col-1"><%= render partial: 'tweets/follow_button', locals: { user: follower } %></div>
+  </div>
+</div>
 <% end %>
-<% if !@followers.nil? %>
-<%= render partial: "users/user_list", locals: {users: @followers}%>
-<% else %>
-<h1 class="display-4 text-center"> Nobody has follow <%= @user.username %> yet </h1>
-<% end %>
+
