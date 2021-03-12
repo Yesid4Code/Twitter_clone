@@ -1,40 +1,21 @@
-Who to follow
-<% @users.each do |user|%>
-<% if current_user.id != user.id %>
-
-<div class="card w-50">
-  <nav class="panel">
-    <div class="panel-block">
-      <article class="media">
-	<div class="media-left">
-	  <figure class="image is-64x64">
-	    <%= gravatar_image_tag(user.email, size: 64, alt: user.name) %>
-	  </figure>
-	</div>
-	<div class="media-content">
-	  <div class="content">
-	    <p>
-	      <strong><%= user.name %></strong><br />
-	      <small><%= user.username %></small>
-	    </p>
-	  </div>
-	</div>
-      </article>
-    </div>
-    <div class="panel-block">
-      <div class="">
-	<div class="level-item has-centered-text">
-	  <div>
-	    <%= render 'follow_button',user: user %>
-	  
-	  </div>
-	</div>
-	  </div>
-	</div>
+<div class="card">
+  <div class="card-header">
+    <b>You might like</b>
+  </div>
+  <% @users.each do |user| %>
+  <% if current_user.id != user.id %>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item p-0">
+      <div class="card-body">
+        <%= gravatar_image_tag(user.email, :gravatar => { :size => 50 }, class: "rounded-circle mr-1", alt: user.name) %>
+        <p class="card-text">
+          <b><%= user.name %></b><br/>
+          <small>@<%= user.username %></small>
+        </p>
+        <%= render 'follow_button', user: user %>
       </div>
-    </div>
-  </nav>
+    </li>
+  </ul>
+  <% end %>
+  <% end %>
 </div>
-
-<% end %>
-<% end %>

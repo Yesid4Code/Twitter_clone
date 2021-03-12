@@ -10,49 +10,29 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
 	<% if user_signed_in? %>
-	<li class="nav-item">
-          <a class="nav-link">
-	    <%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %>
-	  </a>
-        </li>
-	<li class="nav-item">
-          <a class="nav-link">
-	    <%= link_to "Tweet", tweets_path %>
-	  </a>
-        </li>
 	<!-- if user_signed_in?-->
 	<li class="nav-item">
-          <a class="nav-link">
-	    <%= link_to "Profile", current_user.username %>
+	  <a class="nav-link active" aria-current="page" href="<%= users_path %>">Profile
+	  </a>
+        </li>	
+	<li class="nav-item">
+	  <a class="nav-link active" aria-current="page" href="<%= new_tweet_path %>">
+	    Tweet
 	  </a>
         </li>
 	<li class="nav-item">
-          <a class="nav-link">
-	    <%= link_to "New Tweet", new_tweet_path %>
-	  </a>
-        </li>
-	<li class="nav-item">
-          <a class="nav-link">
+	  <a class="nav-link active" aria-current="page">
 	    @<%= current_user.username %>
 	  </a>
-        </li>
+        </li>	
 	<li class="nav-item">
-          <a class="nav-link">
-	    <%= link_to "Profile", user_session_path %>
-	  </a>
+	  <div class="d-grid gap-2 d-md-block">
+	    <button class="btn btn-primary" type="button">
+	      <%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %>
+	    </button>
+	  </div>
         </li>
-
 	<% end %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
       </ul>
     </div>
   </div>

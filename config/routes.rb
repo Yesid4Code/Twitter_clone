@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   end
   resources :tweets
   resources :relationships, only: [:create, :destroy]
-  resources :users#, :path => '/' do end
+  # resources :users#, :path => '/' do end
   root 'home#index'
 end

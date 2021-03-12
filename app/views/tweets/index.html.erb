@@ -1,15 +1,12 @@
-<div class="container pt-4">
+<div class="container">
   <div class="row">
-    <div class="col-3"><!-- Column 1 -->
-      One of three columns
+    <div class="col"><!-- Column 1 -->
+      <%= render partial: 'profile', locals: { user: @user } %><br>
     </div> <!-- Column 1 -->
-    <div class="col-6">
-      <h1>two of three columns</h1>
+    <div class="col-7">
       <%= render 'feed' %>
     </div><!-- Column 2 -->
     <div class="col-3"> <!-- column 3 -->
-      Three of three columns
-      <%= render partial: 'profile', locals: { user: @user } %><br>
       <%= render 'who_to_follow' %>
     </div> <!-- Column 3 -->
   </div>

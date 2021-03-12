@@ -31,14 +31,15 @@
 	<div class="level-item has-centered-text">
 	  <div>
 	    <a class="nav-link">
-	      <%= link_to 'follow', followers_user_path(user) %>
+	      <%= link_to 'following', following_user_path(user) %>
 	      <%= user.following.count %>
 	    </a>
 	  </div>
 	</div>
 	<div class="level-item has-centered-text">
 	  <div>
-	    Followers <%= user.followers.count %>
+	    <%= link_to 'followers', followers_user_path(user) %>
+	    <%= user.followers.count %>
 	  </div>
 	</div>
       </div>

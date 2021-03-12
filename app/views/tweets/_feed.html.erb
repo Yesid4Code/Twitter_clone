@@ -1,6 +1,7 @@
+<h1>Home</h1>
 <%= render 'form' %>
 <% @tweets.each do |tweet| %>
-<div class="card w-50">
+<div class="card w-60">
   <div class="card-body">
     <p class="card-text">
       <b><%= tweet.user.name %></b>,
