@@ -4,14 +4,14 @@
       <article class="media">
 	<div class="media-left">
 	  <figure class="image is-64x64">
-	    <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
+	    <%= gravatar_image_tag(user.email, size: 64, alt: user.name) %>
 	  </figure>
 	</div>
 	<div class="media-content">
 	  <div class="content">
 	    <p>
-	      <strong><%= current_user.name %></strong><br />
-	      <small><%= current_user.username %></small>
+	      <strong><%= user.name %></strong><br />
+	      <small><%= user.username %></small>
 	    </p>
 	  </div>
 	</div>
@@ -22,24 +22,23 @@
 	<div class="level-item has-centered-text">
 	  <div>
 	    <% if user_signed_in? %>
-	    Tweets <%= current_user.tweets.count %>
+	    Tweets <%= user.tweets.count %>
 	    <% else %>
 	    <%= render 'follow_button', :user => User.find_by_username(params[:id]) %>
-
-
 	    <% end %>
-	    
-
 	  </div>
 	</div>
 	<div class="level-item has-centered-text">
 	  <div>
-	    Following <%= current_user.following.count %>
+	    <a class="nav-link">
+	      <%= link_to 'follow', followers_user_path(user) %>
+	      <%= user.following.count %>
+	    </a>
 	  </div>
 	</div>
 	<div class="level-item has-centered-text">
 	  <div>
-	    Followers <%= current_user.followers.count %>
+	    Followers <%= user.followers.count %>
 	  </div>
 	</div>
       </div>
