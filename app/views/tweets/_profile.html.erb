@@ -24,8 +24,9 @@
 	    <% if user_signed_in? %>
 	    Tweets <%= current_user.tweets.count %>
 	    <% else %>
-	    <%= render partial: 'follow_button', :user => User.find_by_username(params[:id]) %>
-	    
+	    <%= render 'follow_button', :user => User.find_by_username(params[:id]) %>
+
+
 	    <% end %>
 	    
 
@@ -33,13 +34,12 @@
 	</div>
 	<div class="level-item has-centered-text">
 	  <div>
-	    Following 200M
+	    Following <%= current_user.following.count %>
 	  </div>
 	</div>
 	<div class="level-item has-centered-text">
 	  <div>
-	    Followers
-	    <%= current_user.followers.count %>
+	    Followers <%= current_user.followers.count %>
 	  </div>
 	</div>
       </div>
