@@ -1,12 +1,3 @@
-<div class="level-item has-centered-text">
-  <div>
-    <a class="nav-link">
-      <%= link_to 'followers', followers_path(@user.username) %>
-      
-    </a>
-  </div>
-</div>
-
 <h3>User Followers <%= @user.followers.count %></h3>
 
 <% @user.followers.each do |follower| %>

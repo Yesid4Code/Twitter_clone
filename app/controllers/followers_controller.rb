@@ -1,4 +1,4 @@
-class FollowersController < ActionController::Base
+class FollowersController < ApplicationController
   include UserScoped
 
   def index
