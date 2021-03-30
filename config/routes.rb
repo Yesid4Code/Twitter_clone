@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users do
-    member do
-      get :following, :followers
-    end
-  end
   resources :tweets
+  #resources :users
+  get '/:username', to: 'users#show', as: 'user'
+
+  scope ':username' do
+    resources :followings, only: [:index]
+    resources :followers, only: [:index]
+  end
+    
   resources :relationships, only: [:create, :destroy]
-  # resources :users#, :path => '/' do end
-  root 'home#index'
+  root 'tweets#index'
 end
