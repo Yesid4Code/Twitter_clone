@@ -28,19 +28,13 @@
 	    <% end %>
 	  </div>
 	</div>
-	<div class="level-item has-centered-text">
-	  <div>
-	    <a class="nav-link">
-	      <%= link_to 'following', followings_path(user.username) %>
-	      <%= user.following.count %>
-	    </a>
-	  </div>
+	<div>
+	<%= link_to "Following", followings_path(@user.username) %>
+	<%= user.following.count %>
 	</div>
-	<div class="level-item has-centered-text">
-	  <div>
-	    <%= link_to 'followers', followers_path(user.username) %>
-	    <%= user.followers.count %>
-	  </div>
+	<div>
+	  <%= link_to "Followers", followers_path(@user.username) %>
+          <%= user.followers.count %>
 	</div>
       </div>
     </div>
