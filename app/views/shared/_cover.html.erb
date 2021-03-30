@@ -1,0 +1,18 @@
+<div class="ro">
+  <div id="left">
+    <img class="logo" src="<%= asset_path 'twitter_logo2.png' %>">
+    <i class="fab fa-twitter fab-10x" id="bird"></i>
+  </div>
+  <div id="right">
+    <i id="bird2" class="fab fa-twitter"></i>
+    <div i="text">
+      <span id="first">Happening now </span><br>
+      <span id="second">Join Twitter today.</span>
+    </div>
+    <div>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn1" %>
+    </div>
+    <%= button_to "Login", new_user_session_path, class: "btn btn-outline-primary rounded-pill " %>
+  </div>
+</div>
+
