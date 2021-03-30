@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
   # Helper: call the set_article before any action.
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   
   def index
     @tweets = Tweet.all.order("created_at DESC").paginate(page: params[:page], per_page: 10)
