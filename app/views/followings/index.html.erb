@@ -1,0 +1,11 @@
+<div class="level-item has-centered-text">
+  <div>
+    <a class="nav-link">
+      <%= link_to 'following', followings_path(@user.username) %>
+      <%= @user.following.count %>
+    </a>
+  </div>
+</div>
+<div>
+  <%= link_to 'Back', root_path %>
+</div>

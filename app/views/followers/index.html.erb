@@ -1,0 +1,25 @@
+<div class="level-item has-centered-text">
+  <div>
+    <a class="nav-link">
+      <%= link_to 'followers', followers_path(@user.username) %>
+      
+    </a>
+  </div>
+</div>
+
+<h3>User Followers <%= @user.followers.count %></h3>
+
+<% @user.followers.each do |follower| %>
+<div>
+  <%= gravatar_image_tag(@user.email, size: 64, alt: @user.name) %>
+</div>
+<div>
+  <%= follower.username %>
+  <%= render 'tweets/follow_button', user: follower %><br>
+</div>
+</figure>
+<% end %>
+
+<div>
+  <%= link_to 'Back', root_path %>
+</div>
