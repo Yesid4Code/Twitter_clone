@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
   # Helper: call the set_article before any action.
+  include UserScoped
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
   # before_action :authenticate_user!
   
@@ -16,6 +17,7 @@ class TweetsController < ApplicationController
 
   def new
     @tweet = current_user.tweets.build
+    @users = User.all
   end
 
   # GET /tweet/1/edit
