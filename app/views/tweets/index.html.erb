@@ -1,17 +1,5 @@
 <% if user_signed_in? %>
-<div class="container">
-  <div class="row">
-    <div class="col"><!-- Column 1 -->
-      <%= render partial: 'profile', locals: { user: @user } %><br>
-    </div> <!-- Column 1 -->
-    <div class="col-7">
-      <%= render 'feed' %>
-    </div><!-- Column 2 -->
-    <div class="col-3"> <!-- column 3 -->
-      <%= render 'who_to_follow' %>
-    </div> <!-- Column 3 -->
-  </div>
-</div>
+<%= render 'feed' %><br>
 <% else %>
 <%= render 'shared/cover' %>
 <% end %>
