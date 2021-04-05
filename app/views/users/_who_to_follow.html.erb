@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    <b>You might like</b>
+  </div>
+  <% @users.each do |user| %>
+  <% if current_user.id != user.id %>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item p-0">
+      <div class="card-body">
+        <%= gravatar_image_tag(user.email, :gravatar => { :size => 50 }, class: "rounded-circle mr-1", alt: user.name) %>
+        <p class="card-text">
+          <b><%= user.name %></b><br/>
+          <small>@<%= user.username %></small>
+        </p>
+        <%= render partial: 'users/follow_button', locals: { user: user} %>
+      </div>
+    </li>
+  </ul>
+  <% end %>
+  <% end %>
+</div>
