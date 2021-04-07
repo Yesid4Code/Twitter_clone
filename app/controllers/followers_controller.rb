@@ -3,5 +3,6 @@ class FollowersController < ApplicationController
 
   def index
     @user_followers = @user.followers.paginate(page: params[:page], per_page: 10)
+    @users = User.all
   end
 end
