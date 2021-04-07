@@ -7,5 +7,16 @@
   </div>
 </div>
 <div>
-  <%= link_to 'Back', root_path %>
+  <% @user.following.each do |following| %>
+  <div>
+  <%= gravatar_image_tag(@user.email, size: 64, alt: @user.name) %>
+  </div>
+  <div>
+    <%= following.username %>
+    <%= render 'users/follow_button', user: following %><br>
+  </div>
+  <% end %>
+</div>
+<div>
+  <%= link_to 'Back', :back %>
 </div>

@@ -1,4 +1,4 @@
-<h3>User Followers <%= @user.followers.count %></h3>
+<h3>User Followers: <%= @user.followers.count %></h3>
 
 <% @user.followers.each do |follower| %>
 <div>
@@ -6,11 +6,11 @@
 </div>
 <div>
   <%= follower.username %>
-  <%= render 'tweets/follow_button', user: follower %><br>
+  <%= render 'users/follow_button', user: follower %><br>
 </div>
 </figure>
 <% end %>
 
 <div>
-  <%= link_to 'Back', root_path %>
+  <%= link_to 'Back', :back %>
 </div>
